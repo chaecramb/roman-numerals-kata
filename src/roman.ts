@@ -9,11 +9,9 @@ export function romanConverter(hinduArabicNumeral: number) {
     1000: "M",
   };
 
-  const romanNumeralValues = Object.keys(numeralMap).map((key) =>
-    parseInt(key)
-  );
+  const romanValues = Object.keys(numeralMap).map((key) => parseInt(key));
 
-  const largestNumeralValueNotExceeding = Math.max(
+  const largestRomanValueNotExceedingArabic = Math.max(
     ...romanNumeralValues.filter((number) => number <= hinduArabicNumeral)
   );
 
