@@ -13,5 +13,11 @@ describe("romanConverter", () => {
     };
 
     expect(romanConverter(1)).toBe(numeralMap[1]);
+    expect(romanConverter(5)).toBe(numeralMap[5]);
+    expect(romanConverter(10)).toBe(numeralMap[10]);
+    expect(romanConverter(50)).toBe(numeralMap[50]);
+    expect(romanConverter(100)).toBe(numeralMap[100]);
+    expect(romanConverter(500)).toBe(numeralMap[500]);
+    expect(romanConverter(1000)).toBe(numeralMap[1000]);
   });
 });
