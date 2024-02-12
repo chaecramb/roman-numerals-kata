@@ -1,12 +1,9 @@
-export function romanConverter(
-  hinduArabicNumeral: number,
-  romanNumeral = ""
-): string {
-  if (hinduArabicNumeral < 1 || hinduArabicNumeral > 3000) {
+export function romanConverter(base10Value: number, romanNumeral = ""): string {
+  if (base10Value < 1 || base10Value > 3000) {
     throw new Error("Number should be between 1 and 3000");
   }
 
-  const numeralEquivalences = [
+  const NUMERAL_VALUES = [
     { value: 1000, numeral: "M" },
     { value: 900, numeral: "CM" },
     { value: 500, numeral: "D" },
@@ -22,18 +19,16 @@ export function romanConverter(
     { value: 1, numeral: "I" },
   ];
 
-  const numeralEquiv = numeralEquivalences.find(
-    (ne) => ne.value <= hinduArabicNumeral
-  );
+  const currentNumeral = NUMERAL_VALUES.find((ne) => ne.value <= base10Value);
 
-  if (numeralEquiv !== undefined) {
-    romanNumeral += numeralEquiv.numeral;
-    hinduArabicNumeral -= numeralEquiv.value;
+  if (currentNumeral !== undefined) {
+    romanNumeral += currentNumeral.numeral;
+    base10Value -= currentNumeral.value;
   }
 
-  if (hinduArabicNumeral === 0) {
+  if (base10Value === 0) {
     return romanNumeral;
   } else {
-    return romanConverter(hinduArabicNumeral, romanNumeral);
+    return romanConverter(base10Value, romanNumeral);
   }
 }
