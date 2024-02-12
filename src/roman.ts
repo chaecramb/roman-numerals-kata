@@ -2,6 +2,10 @@ export function romanConverter(
   hinduArabicNumeral: number,
   romanNumeral = ""
 ): string {
+  if (hinduArabicNumeral < 1 || hinduArabicNumeral > 3000) {
+    throw new Error("Number should be between 1 and 3000");
+  }
+
   const numeralEquivalences = [
     { value: 1000, numeral: "M" },
     { value: 900, numeral: "CM" },
