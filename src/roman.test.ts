@@ -21,7 +21,7 @@ describe("romanConverter", () => {
     expect(romanConverter(1000)).toBe(numeralMap[1000]);
   });
 
-  it("return of string of repeated numerals when passed a number exactly divisible by one of the roman numeral values", () => {
+  it("should return of string of repeated numerals when passed a number exactly divisible by one of the roman numeral values", () => {
     expect(romanConverter(3)).toBe(numeralMap[1].repeat(3));
     expect(romanConverter(5)).toBe(numeralMap[5].repeat(1));
     expect(romanConverter(20)).toBe(numeralMap[10].repeat(2));
@@ -29,7 +29,7 @@ describe("romanConverter", () => {
     expect(romanConverter(3000)).toBe(numeralMap[1000].repeat(3));
   });
 
-  it("handle additive Roman numerals", () => {
+  it("should handle additive Roman numerals", () => {
     expect(romanConverter(2)).toBe("II");
     expect(romanConverter(8)).toBe("VIII");
     expect(romanConverter(11)).toBe("XI");
@@ -37,7 +37,7 @@ describe("romanConverter", () => {
     expect(romanConverter(2388)).toBe("MMCCCLXXXVIII");
   });
 
-  it("handle subtractive Roman numerals", () => {
+  it("should handle subtractive Roman numerals", () => {
     expect(romanConverter(4)).toBe("IV");
     expect(romanConverter(9)).toBe("IX");
     expect(romanConverter(14)).toBe("XIV");
