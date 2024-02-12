@@ -28,4 +28,12 @@ describe("romanConverter", () => {
     expect(romanConverter(40)).toBe(numeralMap[10].repeat(4));
     expect(romanConverter(3000)).toBe(numeralMap[1000].repeat(3));
   });
+
+  it("handle additive Roman numerals", () => {
+    expect(romanConverter(2)).toBe("II");
+    expect(romanConverter(8)).toBe("VIII");
+    expect(romanConverter(11)).toBe("XI");
+    expect(romanConverter(153)).toBe("CLIII");
+    expect(romanConverter(2388)).toBe("MMCCCLXXXVIII");
+  });
 });
