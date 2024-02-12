@@ -12,12 +12,14 @@ export function romanConverter(hinduArabicNumeral: number) {
   const romanValues = Object.keys(numeralMap).map((key) => parseInt(key));
 
   const largestRomanValueNotExceedingArabic = Math.max(
-    ...romanNumeralValues.filter((number) => number <= hinduArabicNumeral)
+    ...romanValues.filter((number) => number <= hinduArabicNumeral)
   );
 
   const integerQuotient = Math.floor(
-    hinduArabicNumeral / largestNumeralValueNotExceeding
+    hinduArabicNumeral / largestRomanValueNotExceedingArabic
   );
 
-  return numeralMap[largestNumeralValueNotExceeding].repeat(integerQuotient);
+  return numeralMap[largestRomanValueNotExceedingArabic].repeat(
+    integerQuotient
+  );
 }
