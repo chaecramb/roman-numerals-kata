@@ -22,10 +22,10 @@ describe("romanConverter", () => {
   });
 
   it("return of string of repeated numerals when passed a number exactly divisible by one of the roman numeral values", () => {
-    expect(romanConverter(4)).toBe(numeralMap[1].repeat(4));
+    expect(romanConverter(3)).toBe(numeralMap[1].repeat(3));
     expect(romanConverter(5)).toBe(numeralMap[5].repeat(1));
     expect(romanConverter(20)).toBe(numeralMap[10].repeat(2));
-    expect(romanConverter(40)).toBe(numeralMap[10].repeat(4));
+    expect(romanConverter(300)).toBe(numeralMap[100].repeat(3));
     expect(romanConverter(3000)).toBe(numeralMap[1000].repeat(3));
   });
 
@@ -35,5 +35,24 @@ describe("romanConverter", () => {
     expect(romanConverter(11)).toBe("XI");
     expect(romanConverter(153)).toBe("CLIII");
     expect(romanConverter(2388)).toBe("MMCCCLXXXVIII");
+  });
+
+  it("handle subtractive Roman numerals", () => {
+    expect(romanConverter(4)).toBe("IV");
+    expect(romanConverter(9)).toBe("IX");
+    expect(romanConverter(14)).toBe("XIV");
+    expect(romanConverter(39)).toBe("XXXIX");
+    expect(romanConverter(40)).toBe("XL");
+    expect(romanConverter(44)).toBe("XLIV");
+    expect(romanConverter(45)).toBe("XLV");
+    expect(romanConverter(47)).toBe("XLVII");
+    expect(romanConverter(49)).toBe("XLIX");
+    expect(romanConverter(154)).toBe("CLIV");
+    expect(romanConverter(400)).toBe("CD");
+    expect(romanConverter(2389)).toBe("MMCCCLXXXIX");
+    expect(romanConverter(90)).toBe("XC");
+    expect(romanConverter(429)).toBe("CDXXIX");
+    expect(romanConverter(900)).toBe("CM");
+    expect(romanConverter(994)).toBe("CMXCIV");
   });
 });
