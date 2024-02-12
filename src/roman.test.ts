@@ -1,32 +1,33 @@
 import { romanConverter } from "./roman";
 
 describe("romanConverter", () => {
-  const numeralMap = {
-    1: "I",
-    5: "V",
-    10: "X",
-    50: "L",
-    100: "C",
-    500: "D",
-    1000: "M",
-  };
+  it("should throw an error when passed a number less than 1 or greater than 3000", () => {
+    expect(() => {
+      romanConverter(-1);
+    }).toThrow("Number should be between 1 and 3000");
+    expect(() => {
+      romanConverter(0);
+    }).toThrow("Number should be between 1 and 3000");
+    expect(() => {
+      romanConverter(3001);
+    }).toThrow("Number should be between 1 and 3000");
+  });
 
   it("should return the corresponding roman number when passed the exact value of any one specific symbol", () => {
-    expect(romanConverter(1)).toBe(numeralMap[1]);
-    expect(romanConverter(5)).toBe(numeralMap[5]);
-    expect(romanConverter(10)).toBe(numeralMap[10]);
-    expect(romanConverter(50)).toBe(numeralMap[50]);
-    expect(romanConverter(100)).toBe(numeralMap[100]);
-    expect(romanConverter(500)).toBe(numeralMap[500]);
-    expect(romanConverter(1000)).toBe(numeralMap[1000]);
+    expect(romanConverter(1)).toBe("I");
+    expect(romanConverter(5)).toBe("V");
+    expect(romanConverter(10)).toBe("X");
+    expect(romanConverter(50)).toBe("L");
+    expect(romanConverter(100)).toBe("C");
+    expect(romanConverter(500)).toBe("D");
+    expect(romanConverter(1000)).toBe("M");
   });
 
   it("should return of string of repeated numerals when passed a number exactly divisible by one of the roman numeral values", () => {
-    expect(romanConverter(3)).toBe(numeralMap[1].repeat(3));
-    expect(romanConverter(5)).toBe(numeralMap[5].repeat(1));
-    expect(romanConverter(20)).toBe(numeralMap[10].repeat(2));
-    expect(romanConverter(300)).toBe(numeralMap[100].repeat(3));
-    expect(romanConverter(3000)).toBe(numeralMap[1000].repeat(3));
+    expect(romanConverter(3)).toBe("III");
+    expect(romanConverter(20)).toBe("XX");
+    expect(romanConverter(300)).toBe("CCC");
+    expect(romanConverter(3000)).toBe("MMM");
   });
 
   it("should handle additive Roman numerals", () => {
